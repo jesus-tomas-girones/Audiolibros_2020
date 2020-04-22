@@ -7,6 +7,8 @@ import android.graphics.Bitmap;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.example.audiolibros.model.Libro;
+import com.example.audiolibros.ui.AdaptadorLibrosFiltro;
 
 import java.util.List;
 

@@ -1,6 +1,8 @@
-package com.example.audiolibros;
+package com.example.audiolibros.ui;
 
 import android.content.Context;
+
+import com.example.audiolibros.model.Libro;
 
 import java.util.ArrayList;
 import java.util.List;

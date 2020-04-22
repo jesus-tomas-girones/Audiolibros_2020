@@ -1,11 +1,11 @@
-package com.example.audiolibros;
+package com.example.audiolibros.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import com.example.audiolibros.fragments.DetalleFragment;
-import com.example.audiolibros.fragments.PreferenciasFragment;
-import com.example.audiolibros.fragments.SelectorFragment;
+import com.example.audiolibros.Aplicacion;
+import com.example.audiolibros.R;
+import com.example.audiolibros.model.Libro;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;

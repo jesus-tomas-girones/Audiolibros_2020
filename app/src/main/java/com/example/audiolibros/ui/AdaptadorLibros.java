@@ -1,4 +1,4 @@
-package com.example.audiolibros;
+package com.example.audiolibros.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.example.audiolibros.Aplicacion;
+import com.example.audiolibros.R;
+import com.example.audiolibros.model.Libro;
 
 import java.util.List;
 
@@ -37,8 +40,8 @@ public class AdaptadorLibros extends
       public TextView titulo;
       public ViewHolder(View itemView) {
          super(itemView);
-         portada = (ImageView) itemView.findViewById(R.id.portada);
-         titulo = (TextView) itemView.findViewById(R.id.titulo);
+         portada = itemView.findViewById(R.id.portada);
+         titulo = itemView.findViewById(R.id.titulo);
       }
    }
 

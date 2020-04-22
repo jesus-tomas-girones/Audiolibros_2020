@@ -1,4 +1,4 @@
-package com.example.audiolibros;
+package com.example.audiolibros.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +12,14 @@ public class Libro {
    public Boolean novedad; // Es una novedad
    public Boolean leido;   // Leído por el usuario
 
-   public final static String G_TODOS = "Todos los géneros";
+   private final static String G_TODOS = "Todos los géneros";
    public final static String G_EPICO = "Poema épico";
    public final static String G_S_XIX = "Literatura siglo XIX";
    public final static String G_SUSPENSE = "Suspense";
    public final static String[] G_ARRAY = new String[] {G_TODOS, G_EPICO,
            G_S_XIX, G_SUSPENSE };
 
-   public Libro(String titulo, String autor, String urlImagen,
+   private Libro(String titulo, String autor, String urlImagen,
                 String urlAudio, String genero, Boolean novedad, Boolean leido) {
       this.titulo = titulo; this.autor = autor;
       this.urlImagen = urlImagen; this.urlAudio = urlAudio;
@@ -28,7 +28,7 @@ public class Libro {
 
    public static List<Libro> ejemploLibros() {
       final String SERVIDOR = "http://mmoviles.upv.es/audiolibros/";
-      List<Libro> libros = new ArrayList<Libro>();
+      List<Libro> libros = new ArrayList<>();
       libros.add(new Libro("Kappa", "Akutagawa",
               SERVIDOR+"kappa.jpg", SERVIDOR+"kappa.mp3",
               Libro.G_S_XIX, false, false));

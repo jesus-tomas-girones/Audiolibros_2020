@@ -1,8 +1,7 @@
-package com.example.audiolibros.fragments;
+package com.example.audiolibros.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
-import android.app.Activity;
 //import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,15 +13,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Toast;
 
-import com.example.audiolibros.AdaptadorLibros;
-import com.example.audiolibros.AdaptadorLibrosFiltro;
 import com.example.audiolibros.Aplicacion;
-import com.example.audiolibros.Libro;
-import com.example.audiolibros.MainActivity;
+import com.example.audiolibros.model.Libro;
 import com.example.audiolibros.R;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -30,7 +23,6 @@ import java.util.List;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;

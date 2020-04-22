@@ -1,6 +1,5 @@
-package com.example.audiolibros.fragments;
+package com.example.audiolibros.ui;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -10,19 +9,16 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 import com.example.audiolibros.Aplicacion;
-import com.example.audiolibros.Libro;
-import com.example.audiolibros.MainActivity;
+import com.example.audiolibros.model.Libro;
 import com.example.audiolibros.R;
 
 import java.io.IOException;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 
