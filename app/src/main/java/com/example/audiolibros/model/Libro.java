@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Libro {
-   public String titulo;
-   public String autor;
-   public String urlImagen;
-   public String urlAudio;
-   public String genero;   // Género literario
-   public Boolean novedad; // Es una novedad
-   public Boolean leido;   // Leído por el usuario
+   private String titulo;
+   private String autor;
+   private String urlImagen;
+   private String urlAudio;
+   private String genero;   // Género literario
+   private Boolean novedad; // Es una novedad
+   private Boolean leido;   // Leído por el usuario
 
    private final static String G_TODOS = "Todos los géneros";
    public final static String G_EPICO = "Poema épico";
@@ -51,5 +51,61 @@ public class Libro {
               SERVIDOR+"la_iliada.jpg", SERVIDOR+"la_iliada.mp3",
               Libro.G_EPICO, true, false));
       return libros;
+   }
+
+   public String getTitulo() {
+      return titulo;
+   }
+
+   public void setTitulo(String titulo) {
+      this.titulo = titulo;
+   }
+
+   public String getAutor() {
+      return autor;
+   }
+
+   public void setAutor(String autor) {
+      this.autor = autor;
+   }
+
+   public String getUrlImagen() {
+      return urlImagen;
+   }
+
+   public void setUrlImagen(String urlImagen) {
+      this.urlImagen = urlImagen;
+   }
+
+   public String getUrlAudio() {
+      return urlAudio;
+   }
+
+   public void setUrlAudio(String urlAudio) {
+      this.urlAudio = urlAudio;
+   }
+
+   public String getGenero() {
+      return genero;
+   }
+
+   public void setGenero(String genero) {
+      this.genero = genero;
+   }
+
+   public Boolean getNovedad() {
+      return novedad;
+   }
+
+   public void setNovedad(Boolean novedad) {
+      this.novedad = novedad;
+   }
+
+   public Boolean getLeido() {
+      return leido;
+   }
+
+   public void setLeido(Boolean leido) {
+      this.leido = leido;
    }
 }
