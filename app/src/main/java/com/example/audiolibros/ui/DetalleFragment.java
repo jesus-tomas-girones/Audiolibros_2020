@@ -105,8 +105,8 @@ public class DetalleFragment extends Fragment implements
       mediaController.setEnabled(true);
       try {
          mediaController.show();
-      } finally {
-         Log.e("AudioLibros","ERROR al visionar MediaController");
+      } catch (Exception e){
+         Log.e("AudioLibros","ERROR al visionar MediaController", e);
       }
    }
 

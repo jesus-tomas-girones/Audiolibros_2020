@@ -66,7 +66,13 @@ public class AdaptadorLibrosFiltro extends AdaptadorLibros {
       return indiceFiltro.get(posicion);
    }
 
-   public void borrar(int posicion){
+   public void setData(List<Libro> newData){ //**
+      listaSinFiltro = newData;
+      recalculaFiltro();
+      notifyDataSetChanged();
+   }
+
+/**   public void borrar(int posicion){
       listaSinFiltro.remove((int)getItemId(posicion));
       recalculaFiltro();
    }
@@ -74,5 +80,5 @@ public class AdaptadorLibrosFiltro extends AdaptadorLibros {
    public void insertar(Libro libro){
       listaSinFiltro.add(0,libro);
       recalculaFiltro();
-   }
+   }*/
 }

@@ -24,30 +24,39 @@ import java.util.List;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SelectorFragment extends Fragment
-        implements Animator.AnimatorListener{
+public class SelectorFragment extends Fragment {
    private MainActivity actividad;
    private RecyclerView recyclerView;
    private AdaptadorLibrosFiltro adaptador;
-   private List<Libro> listaLibros;
+   private SelectorViewModel viewModel;
 
    /**  ?????????????????????
     * Mandatory empty constructor for the fragment manager to instantiate the
     * fragment (e.g. upon screen orientation changes).
     */
-   public SelectorFragment() { }
+   //public SelectorFragment() { }
 
    @Override public void onAttach(Context context) {
       super.onAttach(context);
       actividad = (MainActivity) context;
       Aplicacion app = (Aplicacion) actividad.getApplication();
       adaptador = app.getAdaptador();
-      listaLibros = app.getListaLibros();
+      viewModel = ViewModelProviders.of(actividad).get(SelectorViewModel.class);
+      viewModel.getLibroMutableLiveData().observe(actividad, libroListUpdateObserver);
    }
+
+   Observer<List<Libro>> libroListUpdateObserver = new Observer<List<Libro>>() {
+      @Override
+      public void onChanged(List<Libro> libroList) {
+         adaptador.setData(libroList);
+      }
+   };
 
    @Override public View onCreateView(LayoutInflater inflador, ViewGroup
            contenedor, Bundle savedInstanceState) {
@@ -79,7 +88,7 @@ public class SelectorFragment extends Fragment
                public void onClick(DialogInterface dialog, int opcion) {
                   switch (opcion) {
                      case 0: //Compartir
-                        Libro libro = listaLibros.get(id);
+                        Libro libro = viewModel.get(id); //**listaLibros.get(id);
                         Intent i = new Intent(Intent.ACTION_SEND);
                         i.setType("text/plain");
                         i.putExtra(Intent.EXTRA_SUBJECT, libro.titulo);
@@ -91,26 +100,25 @@ public class SelectorFragment extends Fragment
                                 .setAction("SI", new View.OnClickListener() {
                                    @Override
                                    public void onClick(View view) {
-                                      adaptador.borrar(id);
-                                      Animator anim = AnimatorInflater.loadAnimator(actividad,
+                                      viewModel.delete(id);//**adaptador.borrar(id);
+                                      //No hace falta, se hace en adaptador.setData()
+                                      // pero se pierden las animaciones
+                                      //adaptador.notifyItemRemoved(pos);
+
+                                      /*Animator anim = AnimatorInflater.loadAnimator(actividad,
                                               R.animator.menguar);
                                       anim.addListener(SelectorFragment.this);
                                       anim.setTarget(v);
-                                      anim.start();
+                                      anim.start();*/
                                    }
                                 })
                                 .show();
                         break;
                      case 2: //Insertar
-                        //listaLibros.add(listaLibros.get(id));
-                        int posicion = recyclerView.getChildLayoutPosition(v);
-                        adaptador.insertar((Libro) adaptador.getItem(posicion));
-                        adaptador.notifyItemInserted(0);
-                        Snackbar.make(v,"Libro insertado", Snackbar.LENGTH_INDEFINITE)
-                                .setAction("OK", new View.OnClickListener() {
-                                   @Override public void onClick(View view) { }
-                                })
-                                .show();
+                        viewModel.insert(viewModel.get(id));
+                        //No hace falta, se hace en adaptador.setData()
+                        // pero se pierden las animaciones
+                        //adaptador.notifyItemInserted(0);
                         break;
                   }
                }
@@ -176,19 +184,5 @@ public class SelectorFragment extends Fragment
       }
       return super.onOptionsItemSelected(item);
    }
-
-   @Override
-   public void onAnimationStart(Animator animation) { }
-
-   @Override
-   public void onAnimationEnd(Animator animation) {
-      adaptador.notifyDataSetChanged();
-   }
-
-   @Override
-   public void onAnimationCancel(Animator animation) { }
-
-   @Override
-   public void onAnimationRepeat(Animator animation) { }
 
 }
